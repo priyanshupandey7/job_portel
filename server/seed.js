@@ -43,7 +43,7 @@ const importData = async () => {
     const company1 = await Company.create({
       companyName: 'Tata Consultancy Services',
       employer: employer1._id,
-      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTjkZ3iR4qLoLi6cRwsCNw9VRCKHTRySxGq4JqROdbYziMtdGQwFI8CnXe&s=10',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg',
       website: 'https://www.tcs.com',
       industry: 'Information Technology',
       description: 'A global leader in IT services, consulting, and business solutions.',
@@ -53,7 +53,7 @@ const importData = async () => {
     const company2 = await Company.create({
       companyName: 'Flipkart',
       employer: employer2._id,
-      logo: 'https://play-lh.googleusercontent.com/mlWjVjxflQoYJHBBgDQ08FqT8i3KnDG__2RH8P-GWOKlEPAIo8TllTZo3HDQ3J5zlO6oAhc1FAv0Bf2on0wL8w=s256-rw',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/7/7a/Flipkart_logo.svg',
       website: 'https://www.flipkart.com',
       industry: 'E-commerce',
       description: 'India’s leading e-commerce marketplace offering over 30 million products.',
