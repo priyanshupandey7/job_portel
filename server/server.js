@@ -29,12 +29,26 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/companies', companyRoutes);
 
-// Root route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
 const PORT = process.env.PORT || 5000;
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Serve frontend
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../', 'client', 'dist', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
