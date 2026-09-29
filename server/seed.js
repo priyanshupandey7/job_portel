@@ -13,7 +13,7 @@ const importData = async () => {
     // Clear existing data
     await Job.deleteMany();
     await Company.deleteMany();
-    await User.deleteMany({ email: { $in: ['vikram@tcs-mock.in', 'priya@flipkart-mock.in'] } });
+    await User.deleteMany({ email: { $in: ['vikram@tcs-mock.in', 'priya@flipkart-mock.in', 'elon@tesla-mock.com'] } });
     
     // 1. Create Employers
     console.log('Creating employers...');
@@ -27,6 +27,13 @@ const importData = async () => {
     const employer2 = await User.create({
       fullName: 'Priya Patel',
       email: 'priya@flipkart-mock.in',
+      password: 'password123',
+      role: 'employer',
+    });
+
+    const employer3 = await User.create({
+      fullName: 'Elon Musk',
+      email: 'elon@tesla-mock.com',
       password: 'password123',
       role: 'employer',
     });
@@ -51,6 +58,16 @@ const importData = async () => {
       industry: 'E-commerce',
       description: 'India’s leading e-commerce marketplace offering over 30 million products.',
       address: 'Outer Ring Road, Bengaluru, Karnataka, India',
+    });
+
+    const company3 = await Company.create({
+      companyName: 'Tesla',
+      employer: employer3._id,
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png',
+      website: 'https://www.tesla.com',
+      industry: 'Automotive & Energy',
+      description: 'Accelerating the world\'s transition to sustainable energy.',
+      address: 'Austin, Texas, USA',
     });
 
     // 3. Create Jobs
@@ -116,6 +133,36 @@ const importData = async () => {
         postedBy: employer2._id,
         status: 'Active',
       },
+      {
+        title: 'Full Stack Engineer',
+        company: company3._id,
+        location: 'Remote',
+        jobType: 'Full-Time',
+        category: 'Engineering',
+        salary: '₹25,00,000 - ₹35,00,000',
+        experienceLevel: '4+ Years',
+        skillsRequired: ['Node.js', 'React', 'MongoDB', 'AWS'],
+        description: 'Join the Tesla software team to build internal tools and customer-facing web applications.',
+        responsibilities: '- Build end-to-end features\n- Optimize for scale\n- Write clean, testable code',
+        vacancy: 5,
+        postedBy: employer3._id,
+        status: 'Active',
+      },
+      {
+        title: 'Machine Learning Engineer',
+        company: company3._id,
+        location: 'Austin, Texas',
+        jobType: 'Full-Time',
+        category: 'Engineering',
+        salary: '₹35,00,000 - ₹50,00,000',
+        experienceLevel: '3+ Years',
+        skillsRequired: ['Python', 'PyTorch', 'Computer Vision'],
+        description: 'Help build the brains for full self-driving capabilities.',
+        responsibilities: '- Train deep neural networks\n- Optimize models for inference\n- Work on cutting-edge CV algorithms',
+        vacancy: 2,
+        postedBy: employer3._id,
+        status: 'Active',
+      }
     ]);
 
     console.log('Data Imported successfully!');
