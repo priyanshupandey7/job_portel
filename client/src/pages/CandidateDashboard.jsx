@@ -89,6 +89,11 @@ const CandidateDashboard = () => {
                       </td>
                       <td className="p-4 text-slate-600">
                         <div className="flex items-center">
+                          {app.job?.company?.logo ? (
+                            <img src={app.job.company.logo} alt={app.job.company.companyName} className="h-6 w-6 rounded-full object-cover mr-2 border border-slate-200" />
+                          ) : (
+                            <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(app.job?.company?.companyName || 'C')}&background=random&color=fff&size=64`} alt={app.job?.company?.companyName} className="h-6 w-6 rounded-full object-cover mr-2 border border-slate-200" />
+                          )}
                           {app.job?.company?.companyName}
                         </div>
                       </td>

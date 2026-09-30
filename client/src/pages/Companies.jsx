@@ -76,7 +76,7 @@ const Companies = () => {
                     {company.logo ? (
                       <img src={company.logo} alt={company.companyName} className="h-full w-full object-contain" />
                     ) : (
-                      <Building2 className="h-8 w-8 text-slate-400" />
+                      <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(company.companyName || 'Company')}&background=random&color=fff&size=128`} alt={company.companyName} className="h-full w-full object-cover rounded-lg" />
                     )}
                   </div>
                   <div>

@@ -77,7 +77,7 @@ const JobDetails = () => {
                 {job.company?.logo ? (
                   <img src={job.company.logo} alt={job.company.companyName} className="h-full w-full object-cover" />
                 ) : (
-                  <Building2 className="h-10 w-10 text-slate-300" />
+                  <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(job.company?.companyName || 'Job')}&background=random&color=fff&size=128`} alt={job.company?.companyName || 'Company'} className="h-full w-full object-cover" />
                 )}
               </div>
               <div>

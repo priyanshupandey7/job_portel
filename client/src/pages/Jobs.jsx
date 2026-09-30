@@ -110,7 +110,7 @@ const Jobs = () => {
                     {job.company?.logo ? (
                       <img src={job.company.logo} alt={job.company.companyName} className="h-full w-full object-cover" />
                     ) : (
-                      <BuildingIcon companyName={job.company?.companyName} />
+                      <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(job.company?.companyName || 'Job')}&background=random&color=fff&size=128`} alt={job.company?.companyName || 'Company'} className="h-full w-full object-cover" />
                     )}
                   </div>
                   <div>
@@ -144,11 +144,5 @@ const Jobs = () => {
     </div>
   );
 };
-
-const BuildingIcon = ({ companyName }) => (
-  <div className="text-2xl font-bold text-slate-400">
-    {companyName ? companyName.charAt(0).toUpperCase() : 'B'}
-  </div>
-);
 
 export default Jobs;
